@@ -48,29 +48,26 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="js/csv_to_html_table.js"></script>
 
-    <script>
-        function format_link(link) {
-            if (link)
-                return "<a href='" + link + "' target='_blank'>" + link + "</a>";
-            else return "";
-        }
+  <script>
 
-        CsvToHtmlTable.init({
-            csv_path: "data/terms.csv",
-            element: "table-container",
-            allow_download: true,
-            csv_options: {
-                separator: ",",
-                delimiter: '"'
-            },
-            datatables_options: {
-                paging: false
-            },
-            custom_formatting: [
-                [4, format_link]
-            ]
-        });
-    </script>
+  //my custom function that creates a hyperlink
+  function format_link(link){
+    if (link)
+      return "<a href='" + link + "' target='_blank'>" + link + "</a>";
+    else
+      return "";
+  }
+
+  //initializing the table
+  CsvToHtmlTable.init({
+    csv_path: 'data/terms.csv', 
+    element: 'table-container', 
+    allow_download: true,
+    csv_options: {separator: ',', delimiter: '"'},
+    datatables_options: {"paging": false},
+    custom_formatting: [[4, format_link]] //execute the function on the 4th column of every row
+  });
+</script>
 </body>
 
 </html>
